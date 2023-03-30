@@ -3,7 +3,6 @@ import collections
 import matplotlib.pyplot as mp
 import numpy as np
 import math
-import re
 
 
 def geometric_progression(n, u, r):
