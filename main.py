@@ -3,6 +3,9 @@ import collections
 import matplotlib.pyplot as mp
 import numpy as np
 import math
+import cv2
+import skimage.color
+import skimage.util
 
 
 def geometric_progression(n, u, r):
@@ -44,14 +47,25 @@ def most_less_frequent(file_name):
     print("Max character =", max_char)
 
 
+def histogram_bmp(file_name):
+    image = cv2.imread("./TestFilesCD/lena.bmp")
+    vals = image.mean(axis=2).flatten()
+    mp.hist(vals, 255)
+    mp.xlim([0, 255])
+    mp.show()
+
+
 def histogram(file_name):
     file = open(file_name, "r", encoding="ISO-8859-1")
     text = file.read()
     letters_hist = collections.Counter(text.replace('\n', ''))
     file.close()
     counts = letters_hist.values()
-    letters = letters_hist.keys()
+    letters = sorted(letters_hist.keys())
     bar_x_locations = np.arange(len(counts))
+    mp.title = "Ocorrências de caracteres"
+    mp.xlabel = "Caracteres"
+    mp.ylabel = "Ocorrências"
     mp.bar(bar_x_locations, counts, align='center', data="Ocorrências")
     mp.xticks(bar_x_locations, letters)
     mp.show()
@@ -80,15 +94,16 @@ def percentage_estimate(file_name):
 
 
 def main():
-    print(mdc(1000, 300))
+    """print(mdc(1000, 300))
     print(mdc(1800, 1500))
     print(mdc(1800, 1050))
     arr = geometric_progression(10, 1, 2)
     for i in range(0, len(arr)):
         print(i + 1, " -> ", arr[i])
-    most_less_frequent("./TestFilesCD/alice29.txt")
-    # histogram("./TestFilesCD/alice29.txt")
-    percentage_estimate("./ListaPalavrasPT.txt")
+    most_less_frequent("./TestFilesCD/alice29.txt")"""
+    #histogram("./TestFilesCD/alice29.txt")
+    #percentage_estimate("./ListaPalavrasPT.txt")
+    histogram_bmp("lena.bmp")
 
 
 if __name__ == '__main__':

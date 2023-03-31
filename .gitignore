@@ -1,0 +1,7 @@
+# venv directory
+venv
+
+# .idea files
+.idea
+
+.gitignore
