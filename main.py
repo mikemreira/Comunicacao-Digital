@@ -3,9 +3,7 @@ import collections
 import matplotlib.pyplot as mp
 import numpy as np
 import math
-import cv2
-import skimage.color
-import skimage.util
+import c v2
 
 
 def geometric_progression(n, u, r):
@@ -19,7 +17,6 @@ def mdc(a, b):
     while b != 0:
         (b, a) = (a % b, b)
     return a
-
 
 def read_file(file_name):
     arr = array.array("i", (0 for _ in range(0, 255)))
