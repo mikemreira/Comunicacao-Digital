@@ -53,7 +53,7 @@ def main_exercise_3():
     os.remove(file_name)
     print()
     print("Entropy with size 20 and size 10000000 respectfully")
-    print(entropy_compare(20, 10000000))
+    print(entropy_compare(20, 100000))
     print()
     print("spaces for better look")
     for i in range(5):
