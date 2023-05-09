@@ -19,7 +19,6 @@ def symbol_generator(symbols, size, file_name, probabilities=None):
 def entropy_compare(sizeM, sizeN):
     symbols = ['a', 'b', 'c', 'd', 'e', 'f']
     probabilities = [0.9, 0.1, 0, 0, 0, 0]
-    entropy = 0
     result1 = symbol_generator(symbols, sizeM, "entropyCompare1", probabilities).split(" ")
     result2 = symbol_generator(symbols, sizeN, "entropyCompare2", probabilities).split(" ")
     entropy1 = entropy_calculator(symbols, result1)
@@ -53,7 +52,8 @@ def main_exercise_3():
     # comment this vvv if you want file to appear
     os.remove(file_name)
     print()
-    print(entropy_compare(20, 100))
+    print("Entropy with size 20 and size 10000000 respectfully")
+    print(entropy_compare(20, 10000000))
     print()
     print("spaces for better look")
     for i in range(5):
