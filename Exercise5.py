@@ -1,6 +1,7 @@
-
 import random as rand
-def binarySymmetricChannel(sequence, expectedBer):
+
+
+def file_in_and_out(sequence, expectedBer):
     with open(sequence, 'r', encoding="utf-8") as file:
         char = file.read(1)
         while True:
@@ -10,38 +11,38 @@ def binarySymmetricChannel(sequence, expectedBer):
             if not char:
                 break
 
-def toBinary(text):
-    return ' '.join(format(ord(x), 'b') for x in text)
+
+def to_binary(text):
+    return ' '.join(format(ord(x), 'b').zfill(8) for x in text)
 
 
-def BSC(binary, prob):
-    print(rand.random())
-    interferencia = ""
-    print(binary)
+def bsc(binary, prob):
+    interference = ""
     for x in binary:
-        print("X => "+x)
         if x == " ":
-            interferencia += " "
+            interference += " "
             continue
         is_wrong = rand.random() < prob
         bit = x
         if is_wrong:
-            bit = invertValue(bit)
-            interferencia += str(bit)
-        else:
-            interferencia += str(bit)
-    return interferencia
+            bit = invert_value(bit)
+        interference += str(bit)
+    return interference
 
-def invertValue(x):
-    if x == 1:
+
+def invert_value(x):
+    if x == "1":
         return 0
     return 1
 
+def ber_calculator():
+
+
 def main():
-    binarySymmetricChannel("./TestFilesCD/a.txt", 1)
+    # binarySymmetricChannel("./TestFilesCD/a.txt", 1)
     file = "hello world"
-    print(BSC(toBinary(file), 0.1))
-    print(toBinary(file))
+    print("Original value in bits " + to_binary(file))
+    print("New value in bits  ->  " + bsc(to_binary(file), 0.5))
 
 
 if __name__ == "__main__":
